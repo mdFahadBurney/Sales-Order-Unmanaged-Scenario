@@ -1,0 +1,33 @@
+projection;
+strict ( 2 );
+
+define behavior for ZC_HEADER_SO alias _SOHeader
+use etag
+{
+  use create;
+  use update;
+  use delete;
+
+  use action approveSalesOrderStatus;
+  use action rejectSalesOrderStatus;
+
+  use association _SOItem { create; }
+}
+
+define behavior for ZC_ITEM_SO alias _SOItem
+{
+  use update;
+  use delete;
+
+  use association _SOHeader;
+  use association _SOWhse { create; }
+}
+
+define behavior for ZC_WHSE_SO alias _SOWhse
+{
+  use update;
+  use delete;
+
+  use association _SOHeader;
+  use association _SOItem;
+}

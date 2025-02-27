@@ -1,0 +1,106 @@
+@Metadata.layer: #CORE
+@UI : {
+headerInfo:{
+typeName: 'Product',
+typeNamePlural: 'Products',
+title : { type: #STANDARD , value: 'ItemNo' },
+description : {  value : 'ItemNo'}
+}
+}
+annotate view ZC_ITEM_SO with
+{
+  @UI.facet: [
+  { id: 'SOHeader',
+              purpose : #STANDARD,
+              type:  #IDENTIFICATION_REFERENCE,
+              label: 'General Information',
+              position:  10,
+              targetElement: '_SOHeader'
+                }
+              ,
+//              { 
+//              id: 'SOItem',
+//              purpose : #STANDARD,
+//              type:  #LINEITEM_REFERENCE,
+//              label: 'Item Information',
+//              position:  20,
+//              targetElement: '_SOItem'  
+//              },
+              { id: 'Item',
+               purpose: #STANDARD,
+                type: #IDENTIFICATION_REFERENCE,
+                 label: 'Item Information', 
+                 position: 20
+                  },             
+               { 
+               id : 'Quantity',
+               purpose: #STANDARD,
+                type: #LINEITEM_REFERENCE,
+                 label: 'Quantity and Warehouse Information', 
+                 position: 30,
+                 targetElement: '_SOWhse'              
+               }       
+          ]
+  @UI : {
+          identification: [
+            { position: 11, label: 'Item Number'}
+          ],
+          lineItem: [
+              { position: 11 }
+          ],
+          selectionField: [
+              { position: 11 }
+          ]
+      }
+  ItemNo;
+
+  @UI : {
+     identification: [
+       { position: 10, label: 'Material Number'}
+     ],
+     lineItem: [
+         { position: 10 }
+     ],
+     selectionField: [
+         { position: 10 }
+     ]
+  }
+  MaterialNo;
+  @UI : {
+          identification: [
+            { position: 12, label: 'Material Description'}
+          ],
+          lineItem: [
+              { position: 12 }
+          ],
+          selectionField: [
+              { position: 12 }
+          ]
+      }
+  MaterialDesc;
+  @UI : {    identification: [
+            { position: 14, label: 'Item Amount'}
+          ],
+          lineItem: [
+              { position: 14 }
+          ],
+          selectionField: [
+              { position: 14 }
+          ]
+      }
+  ItemAmt;
+  @UI : {
+           identification: [
+             { position: 15, label: 'Currency'}
+           ],
+           lineItem: [
+               { position: 15 }
+           ],
+           selectionField: [
+               { position: 15 }
+           ]
+       }
+  @Consumption.valueHelpDefinition: [{ entity:{name: 'I_CurrencyStdVH', element: 'Currency' } }]
+  Currency;
+
+}

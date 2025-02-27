@@ -1,0 +1,6 @@
+@EndUserText.label: 'RAP Header Service Definition'
+define service ZUI_RAP_HEADER_MFB {
+  expose ZC_HEADER_SO;
+  expose ZC_ITEM_SO;
+  expose ZC_WHSE_SO;
+}

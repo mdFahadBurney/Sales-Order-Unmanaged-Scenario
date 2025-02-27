@@ -1,0 +1,75 @@
+unmanaged implementation in class zbp_i_header_so unique;
+strict ( 2 );
+
+define behavior for ZI_HEADER_SO alias _SOHeader
+lock master
+authorization master ( global, instance )
+etag master LocalLastChangedAt
+{
+  create;
+  update;
+  delete;
+  field ( readonly ) OrderNo;
+  field ( readonly  )OrderStatus;
+   action ( features : instance ) approveSalesOrderStatus result[1] $self;
+ action ( features : instance ) rejectSalesOrderStatus result[1] $self;
+  mapping for zso_header_mfb
+  {
+  CustNumber = cust_number;
+  CustDesc = cust_desc;
+  OrderDate = so_date;
+  OrderStatus = order_status;
+  OrderNo = so_number;
+  LocalLastChangedAt = locallastchangedat;
+  }
+
+  association _SOItem { create; }
+
+}
+
+define behavior for ZI_ITEM_SO alias _SOItem
+//late numbering
+lock dependent by _SOHeader
+authorization dependent by _SOHeader
+etag dependent by _SOHeader
+{
+  update;
+  delete;
+  field ( readonly ) OrderNo;
+//  field( readonly )
+  field( mandatory : create,readonly : update ) ItemNo;
+  field(mandatory : create) Currency;
+  association _SOHeader;
+    mapping for zso_item_mfb
+  {
+  ItemNo = item_no;
+  MaterialDesc = material_desc;
+  MaterialNo = material_no;
+  Currency = currency;
+  ItemAmt = item_amt;
+  }
+  association _SOWhse { create; }
+}
+
+define behavior for ZI_WHSE_SO alias _SOWhse
+//late numbering
+lock dependent by _SOHeader
+authorization dependent by _SOHeader
+{
+  update;
+  delete;
+  field ( readonly )  SoNumber, ItemNo;
+  field ( readonly : update ) WarehouseNo;
+   mapping for zso_whse_mfb
+  {
+  ItemNo = item_no;
+  SoNumber = so_number;
+  Comments = comments;
+  WarehouseAddress = whse_address;
+  WarehouseNo = whse_no;
+  UnitOfMeasure = unit_of_measure;
+  }
+
+  association _SOHeader;
+  association _SOItem;
+}

@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_MSAG" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <T100A>
+    <ARBGB>ZUM_RAP_MESSAGES</ARBGB>
+    <MASTERLANG>E</MASTERLANG>
+    <STEXT>Unmanaged SalesOrder Messages</STEXT>
+   </T100A>
+   <T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZUM_RAP_MESSAGES</ARBGB>
+     <MSGNR>001</MSGNR>
+     <TEXT>Customer Description can&apos;t contain Digits[0-9] or Special Characters</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZUM_RAP_MESSAGES</ARBGB>
+     <MSGNR>002</MSGNR>
+     <TEXT>Material Description can&apos;t contain Digits[0-9] or Special Characters</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZUM_RAP_MESSAGES</ARBGB>
+     <MSGNR>003</MSGNR>
+     <TEXT>Sales Order Date Can&apos;t be In Future or Past</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZUM_RAP_MESSAGES</ARBGB>
+     <MSGNR>004</MSGNR>
+     <TEXT>Warehouse &amp;1 Does not Exist</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZUM_RAP_MESSAGES</ARBGB>
+     <MSGNR>005</MSGNR>
+     <TEXT>Customer Number &amp;1 cannot be Alpha-Numeric</TEXT>
+    </T100>
+   </T100>
+  </asx:values>
+ </asx:abap>
+</abapGit>

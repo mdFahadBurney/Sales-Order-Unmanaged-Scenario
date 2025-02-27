@@ -1,0 +1,73 @@
+@Metadata.layer: #CORE
+@UI : {
+headerInfo:{
+typeName: 'Quantity and Warehouse',
+typeNamePlural: 'Quantity and Warehouse',
+title : { type: #STANDARD , value: 'ItemNo' }
+}
+}
+annotate entity ZC_WHSE_SO with
+{
+  @UI.facet: [
+           {
+            id: 'WarehouseNo',
+            purpose: #STANDARD,
+             type: #IDENTIFICATION_REFERENCE,
+              label: ' Info',
+               position: 10
+               }
+       ]
+  @UI : {
+             identification: [
+               { position: 10, label: 'Quantity'}
+             ],
+             lineItem: [
+                 { position: 10 }
+             ],
+             selectionField: [
+                 { position: 10 }
+             ]
+             
+         }
+      @Consumption.valueHelpDefinition: [{ entity:{name: 'I_UnitOfMeasureStdVH', element: 'UnitOfMeasure' } }]
+  Quantity;
+  @UI : {
+        identification: [
+          { position: 11, label: 'Comments'}
+        ],
+        lineItem: [
+            { position: 11 }
+        ],
+        selectionField: [
+            { position: 11 }
+        ]
+    }
+
+  Comments;
+  @UI : {
+          identification: [
+            { position: 12, label: 'Warehouse No'}
+          ],
+          lineItem: [
+              { position: 12 }
+          ],
+          selectionField: [
+              { position: 12 }
+          ]
+      }
+  @Consumption.valueHelpDefinition: [{ entity:{name: 'ZI_WHSE_NUMBER_VH', element: 'Value' } }]
+  WarehouseNo;
+  @UI : {
+          identification: [
+            { position: 13, label: 'Warehouse Address'}
+          ],
+          lineItem: [
+              { position: 13 }
+          ],
+          selectionField: [
+              { position: 13 }
+          ]
+      }
+  WarehouseAddress;
+  
+}
